@@ -21,6 +21,10 @@ interface BasicUserInfo {
    */
   roles?: string[];
   /**
+   * 用户时区
+   */
+  timezone?: string;
+  /**
    * 用户id
    */
   userId: string;

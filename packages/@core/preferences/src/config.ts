@@ -123,6 +123,7 @@ const defaultPreferences: Preferences = {
     refresh: true,
     sidebarToggle: true,
     themeToggle: true,
+    timeDisplay: true,
   },
 };
 

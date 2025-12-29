@@ -3,7 +3,6 @@ import type { ToolbarType } from './types';
 
 import { preferences, usePreferences } from '@vben/preferences';
 
-import { Copyright } from '../basic/copyright';
 import AuthenticationFormView from './form.vue';
 import SloganIcon from './icons/slogan.vue';
 import Toolbar from './toolbar.vue';
@@ -15,14 +14,12 @@ interface Props {
   pageDescription?: string;
   sloganImage?: string;
   toolbar?: boolean;
-  copyright?: boolean;
   toolbarList?: ToolbarType[];
   clickLogo?: () => void;
 }
 
 withDefaults(defineProps<Props>(), {
   appName: '',
-  copyright: true,
   logo: '',
   pageDescription: '',
   pageTitle: '',
@@ -52,14 +49,6 @@ const { authPanelCenter, authPanelLeft, authPanelRight, isDark } =
       class="min-h-full w-2/5 flex-1"
       transition-name="slide-left"
     >
-      <template v-if="copyright" #copyright>
-        <slot name="copyright">
-          <Copyright
-            v-if="preferences.copyright.enable"
-            v-bind="preferences.copyright"
-          />
-        </slot>
-      </template>
     </AuthenticationFormView>
 
     <slot name="logo">
@@ -111,14 +100,6 @@ const { authPanelCenter, authPanelLeft, authPanelRight, isDark } =
       <AuthenticationFormView
         class="md:bg-background shadow-primary/5 shadow-float w-full rounded-3xl pb-20 md:w-2/3 lg:w-1/2 xl:w-[36%]"
       >
-        <template v-if="copyright" #copyright>
-          <slot name="copyright">
-            <Copyright
-              v-if="preferences.copyright.enable"
-              v-bind="preferences.copyright"
-            />
-          </slot>
-        </template>
       </AuthenticationFormView>
     </div>
 
@@ -127,14 +108,6 @@ const { authPanelCenter, authPanelLeft, authPanelRight, isDark } =
       v-if="authPanelRight"
       class="min-h-full w-[34%] flex-1"
     >
-      <template v-if="copyright" #copyright>
-        <slot name="copyright">
-          <Copyright
-            v-if="preferences.copyright.enable"
-            v-bind="preferences.copyright"
-          />
-        </slot>
-      </template>
     </AuthenticationFormView>
   </div>
 </template>

@@ -38,15 +38,6 @@ exports[`defaultPreferences immutability test > should not modify the config obj
     "showIcon": true,
     "styleType": "normal",
   },
-  "copyright": {
-    "companyName": "Vben",
-    "companySiteLink": "https://www.vben.pro",
-    "date": "2024",
-    "enable": true,
-    "icp": "",
-    "icpLink": "",
-    "settingShow": true,
-  },
   "footer": {
     "enable": false,
     "fixed": false,

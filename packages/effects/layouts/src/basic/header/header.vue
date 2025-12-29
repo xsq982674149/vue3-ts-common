@@ -13,6 +13,7 @@ import {
   LanguageToggle,
   PreferencesButton,
   ThemeToggle,
+  TimeDisplay,
 } from '../../widgets';
 
 interface Props {
@@ -76,6 +77,12 @@ const rightSlots = computed(() => {
     list.push({
       index: REFERENCE_VALUE + 50,
       name: 'notification',
+    });
+  }
+  if (preferences.widget.timeDisplay) {
+    list.push({
+      index: REFERENCE_VALUE + 90,
+      name: 'time-display',
     });
   }
 
@@ -165,6 +172,9 @@ function clearPreferencesAndLogout() {
         </template>
         <template v-else-if="slot.name === 'fullscreen'">
           <VbenFullScreen class="mr-1" />
+        </template>
+        <template v-else-if="slot.name === 'time-display'">
+          <TimeDisplay class="mr-1" />
         </template>
       </slot>
     </template>

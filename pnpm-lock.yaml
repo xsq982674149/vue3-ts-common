@@ -1593,6 +1593,9 @@ importers:
       '@vben-core/typings':
         specifier: workspace:*
         version: link:../@core/base/typings
+      dayjs:
+        specifier: 'catalog:'
+        version: 1.11.13
       vue-router:
         specifier: 'catalog:'
         version: 4.5.1(vue@3.5.17(typescript@5.8.3))

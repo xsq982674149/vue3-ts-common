@@ -19,6 +19,7 @@ export {
   CircleCheckBig,
   CircleHelp,
   CircleX,
+  Clock,
   Copy,
   CornerDownLeft,
   Ellipsis,

@@ -5,7 +5,8 @@ import utc from 'dayjs/plugin/utc';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-dayjs.tz.setDefault('Asia/Shanghai');
+// 项目统一使用 UTC 时区
+dayjs.tz.setDefault('UTC');
 
 const dateUtil = dayjs;
 

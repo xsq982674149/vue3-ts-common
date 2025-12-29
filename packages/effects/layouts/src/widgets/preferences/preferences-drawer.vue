@@ -42,7 +42,6 @@ import {
   BuiltinTheme,
   ColorMode,
   Content,
-  Copyright,
   Footer,
   General,
   GlobalShortcutKeys,
@@ -132,16 +131,6 @@ const navigationAccordion = defineModel<boolean>('navigationAccordion');
 
 const footerEnable = defineModel<boolean>('footerEnable');
 const footerFixed = defineModel<boolean>('footerFixed');
-
-const copyrightSettingShow = defineModel<boolean>('copyrightSettingShow');
-const copyrightEnable = defineModel<boolean>('copyrightEnable');
-const copyrightCompanyName = defineModel<string>('copyrightCompanyName');
-const copyrightCompanySiteLink = defineModel<string>(
-  'copyrightCompanySiteLink',
-);
-const copyrightDate = defineModel<string>('copyrightDate');
-const copyrightIcp = defineModel<string>('copyrightIcp');
-const copyrightIcpLink = defineModel<string>('copyrightIcpLink');
 
 const shortcutKeysEnable = defineModel<boolean>('shortcutKeysEnable');
 const shortcutKeysGlobalSearch = defineModel<boolean>(
@@ -392,20 +381,6 @@ async function handleReset() {
               <Footer
                 v-model:footer-enable="footerEnable"
                 v-model:footer-fixed="footerFixed"
-              />
-            </Block>
-            <Block
-              v-if="copyrightSettingShow"
-              :title="$t('preferences.copyright.title')"
-            >
-              <Copyright
-                v-model:copyright-company-name="copyrightCompanyName"
-                v-model:copyright-company-site-link="copyrightCompanySiteLink"
-                v-model:copyright-date="copyrightDate"
-                v-model:copyright-enable="copyrightEnable"
-                v-model:copyright-icp="copyrightIcp"
-                v-model:copyright-icp-link="copyrightIcpLink"
-                :disabled="!footerEnable"
               />
             </Block>
           </template>

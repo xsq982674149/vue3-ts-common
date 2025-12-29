@@ -1,6 +1,7 @@
 import type { UserInfo } from '@vben/types';
 
 import { useUserStore } from '@vben/stores';
+import { setTimezoneToCookie } from '@vben/utils';
 
 import { defineStore } from 'pinia';
 
@@ -14,6 +15,7 @@ function getMockUserInfo(): UserInfo {
     homePath: '/analytics',
     realName: '管理员',
     roles: ['super'],
+    timezone: 'Asia/Shanghai',
     token: 'mock-access-token',
     userId: '1',
     username: 'admin',
@@ -29,6 +31,10 @@ export const useAuthStore = defineStore('auth', () => {
   async function fetchUserInfo() {
     const userInfo = getMockUserInfo();
     userStore.setUserInfo(userInfo);
+    // 将用户时区存入 Cookie
+    if (userInfo.timezone) {
+      setTimezoneToCookie(userInfo.timezone);
+    }
     return userInfo;
   }
 

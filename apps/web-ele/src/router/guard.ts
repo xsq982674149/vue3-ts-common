@@ -3,7 +3,7 @@ import type { Router } from 'vue-router';
 
 import { preferences } from '@vben/preferences';
 import { useAccessStore, useUserStore } from '@vben/stores';
-import { startProgress, stopProgress } from '@vben/utils';
+import { setTimezoneToCookie, startProgress, stopProgress } from '@vben/utils';
 
 import { accessRoutes, coreRouteNames } from '#/router/routes';
 
@@ -19,6 +19,7 @@ function getMockUserInfo(): UserInfo {
     homePath: '/analytics',
     realName: '管理员',
     roles: ['super'],
+    timezone: 'Asia/Shanghai',
     token: 'mock-access-token',
     userId: '1',
     username: 'admin',
@@ -82,6 +83,10 @@ function setupAccessGuard(router: Router) {
     // 设置模拟用户信息
     const userInfo = userStore.userInfo || getMockUserInfo();
     userStore.setUserInfo(userInfo);
+    // 将用户时区存入 Cookie
+    if (userInfo.timezone) {
+      setTimezoneToCookie(userInfo.timezone);
+    }
 
     const userRoles = userInfo.roles ?? [];
 

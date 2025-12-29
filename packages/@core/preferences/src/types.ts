@@ -251,6 +251,8 @@ interface WidgetPreferences {
   sidebarToggle: boolean;
   /** 是否显示主题切换部件 */
   themeToggle: boolean;
+  /** 是否显示时间显示部件 */
+  timeDisplay: boolean;
 }
 
 interface Preferences {
