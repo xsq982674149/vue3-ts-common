@@ -384,10 +384,6 @@ const headerSlots = computed(() => {
         :check-updates-interval="preferences.app.checkUpdatesInterval"
       />
 
-      <Transition v-if="preferences.widget.lockScreen" name="slide-up">
-        <slot v-if="accessStore.isLockScreen" name="lock-screen"></slot>
-      </Transition>
-
       <template v-if="preferencesButtonPosition.fixed">
         <Preferences
           class="z-100 fixed bottom-20 right-0"

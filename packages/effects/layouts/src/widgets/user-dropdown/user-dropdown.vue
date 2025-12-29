@@ -6,10 +6,9 @@ import type { AnyFunction } from '@vben/types';
 import { computed, useTemplateRef, watch } from 'vue';
 
 import { useHoverToggle } from '@vben/hooks';
-import { LockKeyhole, LogOut } from '@vben/icons';
+import { LogOut } from '@vben/icons';
 import { $t } from '@vben/locales';
 import { preferences, usePreferences } from '@vben/preferences';
-import { useAccessStore } from '@vben/stores';
 import { isWindowsOs } from '@vben/utils';
 
 import { useVbenModal } from '@vben-core/popup-ui';
@@ -27,8 +26,6 @@ import {
 } from '@vben-core/shadcn-ui';
 
 import { useMagicKeys, whenever } from '@vueuse/core';
-
-import { LockScreenModal } from '../lock-screen';
 
 interface Props {
   /**
@@ -84,12 +81,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{ logout: [] }>();
 
-const { globalLockScreenShortcutKey, globalLogoutShortcutKey } =
-  usePreferences();
-const accessStore = useAccessStore();
-const [LockModal, lockModalApi] = useVbenModal({
-  connectedComponent: LockScreenModal,
-});
+const { globalLogoutShortcutKey } = usePreferences();
 const [LogoutModal, logoutModalApi] = useVbenModal({
   onConfirm() {
     handleSubmitLogout();
@@ -123,22 +115,9 @@ const enableLogoutShortcutKey = computed(() => {
   return props.enableShortcutKey && globalLogoutShortcutKey.value;
 });
 
-const enableLockScreenShortcutKey = computed(() => {
-  return props.enableShortcutKey && globalLockScreenShortcutKey.value;
-});
-
 const enableShortcutKey = computed(() => {
   return props.enableShortcutKey && preferences.shortcutKeys.enable;
 });
-
-function handleOpenLock() {
-  lockModalApi.open();
-}
-
-function handleSubmitLock(lockScreenPassword: string) {
-  lockModalApi.close();
-  accessStore.lockScreen(lockScreenPassword);
-}
 
 function handleLogout() {
   // emit
@@ -158,23 +137,10 @@ if (enableShortcutKey.value) {
       handleLogout();
     }
   });
-
-  whenever(keys['Alt+KeyL']!, () => {
-    if (enableLockScreenShortcutKey.value) {
-      handleOpenLock();
-    }
-  });
 }
 </script>
 
 <template>
-  <LockModal
-    v-if="preferences.widget.lockScreen"
-    :avatar="avatar"
-    :text="text"
-    @submit="handleSubmitLock"
-  />
-
   <LogoutModal
     :cancel-text="$t('common.cancel')"
     :confirm-text="$t('common.confirm')"
@@ -234,18 +200,6 @@ if (enableShortcutKey.value) {
           {{ menu.text }}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          v-if="preferences.widget.lockScreen"
-          class="mx-1 flex cursor-pointer items-center rounded-sm py-1 leading-8"
-          @click="handleOpenLock"
-        >
-          <LockKeyhole class="mr-2 size-4" />
-          {{ $t('ui.widgets.lockScreen.title') }}
-          <DropdownMenuShortcut v-if="enableLockScreenShortcutKey">
-            {{ altView }} L
-          </DropdownMenuShortcut>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator v-if="preferences.widget.lockScreen" />
         <DropdownMenuItem
           class="mx-1 flex cursor-pointer items-center rounded-sm py-1 leading-8"
           @click="handleLogout"

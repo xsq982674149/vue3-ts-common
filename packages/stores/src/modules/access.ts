@@ -28,14 +28,6 @@ interface AccessState {
    */
   isAccessChecked: boolean;
   /**
-   * 是否锁屏状态
-   */
-  isLockScreen: boolean;
-  /**
-   * 锁屏密码
-   */
-  lockScreenPassword?: string;
-  /**
    * refreshToken
    */
   refreshToken: AccessToken;
@@ -65,10 +57,6 @@ export const useAccessStore = defineStore('core-access', {
       }
       return findMenu(this.accessMenus, path);
     },
-    lockScreen(password: string) {
-      this.isLockScreen = true;
-      this.lockScreenPassword = password;
-    },
     setAccessCodes(codes: string[]) {
       this.accessCodes = codes;
     },
@@ -87,10 +75,6 @@ export const useAccessStore = defineStore('core-access', {
     setRefreshToken(token: AccessToken) {
       this.refreshToken = token;
     },
-    unlockScreen() {
-      this.isLockScreen = false;
-      this.lockScreenPassword = undefined;
-    },
   },
   persist: {
     // 持久化
@@ -98,8 +82,6 @@ export const useAccessStore = defineStore('core-access', {
       'accessToken',
       'refreshToken',
       'accessCodes',
-      'isLockScreen',
-      'lockScreenPassword',
     ],
   },
   state: (): AccessState => ({
@@ -108,8 +90,6 @@ export const useAccessStore = defineStore('core-access', {
     accessRoutes: [],
     accessToken: null,
     isAccessChecked: false,
-    isLockScreen: false,
-    lockScreenPassword: undefined,
     refreshToken: null,
   }),
 });
