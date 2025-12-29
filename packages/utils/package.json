@@ -23,6 +23,10 @@
     "@vben-core/shared": "workspace:*",
     "@vben-core/typings": "workspace:*",
     "dayjs": "catalog:",
+    "js-cookie": "^3.0.5",
     "vue-router": "catalog:"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6"
   }
 }

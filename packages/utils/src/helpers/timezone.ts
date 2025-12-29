@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
+import Cookies from 'js-cookie';
 
 // 扩展 dayjs 插件
 dayjs.extend(utc);
@@ -15,17 +16,7 @@ const DEFAULT_TIMEZONE = 'UTC';
  * 从 Cookie 中获取用户时区
  */
 function getTimezoneFromCookie(): string {
-  if (typeof document === 'undefined') {
-    return DEFAULT_TIMEZONE;
-  }
-  const cookies = document.cookie.split(';');
-  for (const cookie of cookies) {
-    const [key, value] = cookie.trim().split('=');
-    if (key === TIMEZONE_COOKIE_KEY && value) {
-      return decodeURIComponent(value);
-    }
-  }
-  return DEFAULT_TIMEZONE;
+  return Cookies.get(TIMEZONE_COOKIE_KEY) || DEFAULT_TIMEZONE;
 }
 
 /**
@@ -34,12 +25,7 @@ function getTimezoneFromCookie(): string {
  * @param days Cookie 有效天数，默认 365 天
  */
 function setTimezoneToCookie(tz: string, days: number = 365): void {
-  if (typeof document === 'undefined') {
-    return;
-  }
-  const expires = new Date();
-  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-  document.cookie = `${TIMEZONE_COOKIE_KEY}=${encodeURIComponent(tz)};expires=${expires.toUTCString()};path=/`;
+  Cookies.set(TIMEZONE_COOKIE_KEY, tz, { expires: days, path: '/' });
 }
 
 /**
