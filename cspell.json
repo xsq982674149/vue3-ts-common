@@ -60,9 +60,6 @@
     "**/*-dist/**",
     "**/icons/**",
     "pnpm-lock.yaml",
-    "**/*.log",
-    "**/*.test.ts",
-    "**/*.spec.ts",
-    "**/__tests__/**"
+    "**/*.log"
   ]
 }
