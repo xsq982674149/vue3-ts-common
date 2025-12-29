@@ -56,15 +56,6 @@ function utcToLocal(
   return dayjs.utc(utcTime).tz(userTimezone).format(format);
 }
 
-/**
- * UTC 时间转换为用户时区时间（返回 dayjs 对象）
- * @param utcTime UTC 时间（字符串、Date 对象或时间戳）
- * @returns dayjs 对象
- */
-function utcToLocalDayjs(utcTime: Date | number | string): dayjs.Dayjs {
-  const userTimezone = getTimezoneFromCookie();
-  return dayjs.utc(utcTime).tz(userTimezone);
-}
 
 /**
  * 用户时区时间转换为 UTC 时间
@@ -80,15 +71,6 @@ function localToUtc(
   return dayjs.tz(localTime, userTimezone).utc().format(format);
 }
 
-/**
- * 用户时区时间转换为 UTC 时间（返回 dayjs 对象）
- * @param localTime 用户时区时间（字符串、Date 对象或时间戳）
- * @returns dayjs 对象
- */
-function localToUtcDayjs(localTime: Date | number | string): dayjs.Dayjs {
-  const userTimezone = getTimezoneFromCookie();
-  return dayjs.tz(localTime, userTimezone).utc();
-}
 
 /**
  * 获取当前用户时区
@@ -139,10 +121,8 @@ export {
   getTimezoneFromCookie,
   getTimezoneOffset,
   localToUtc,
-  localToUtcDayjs,
   setTimezone,
   setTimezoneToCookie,
   TIMEZONE_COOKIE_KEY,
   utcToLocal,
-  utcToLocalDayjs,
 };
