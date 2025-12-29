@@ -15,5 +15,5 @@ pnpm add @vben/constants
 ### 使用
 
 ```ts
-import { LOGIN_PATH } from '@vben/constants';
+import { SUPPORT_LANGUAGES } from '@vben/constants';
 ```

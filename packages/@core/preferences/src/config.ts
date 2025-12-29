@@ -3,7 +3,6 @@ import type { Preferences } from './types';
 const defaultPreferences: Preferences = {
   app: {
     accessMode: 'frontend',
-    authPageLayout: 'panel-right',
     checkUpdatesInterval: 1,
     colorGrayMode: false,
     colorWeakMode: false,
@@ -25,7 +24,6 @@ const defaultPreferences: Preferences = {
     isMobile: false,
     layout: 'sidebar-nav',
     locale: 'zh-CN',
-    loginExpiredMode: 'page',
     name: 'Vben Admin',
     preferencesButtonPosition: 'auto',
     watermark: false,

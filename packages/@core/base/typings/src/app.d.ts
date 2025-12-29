@@ -43,13 +43,6 @@ type LayoutHeaderModeType = 'auto' | 'auto-scroll' | 'fixed' | 'static';
 type LayoutHeaderMenuAlignType = 'center' | 'end' | 'start';
 
 /**
- * 登录过期模式
- * modal 弹窗模式
- * page 页面模式
- */
-type LoginExpiredModeType = 'modal' | 'page';
-
-/**
  * 面包屑样式
  * background 背景
  * normal 默认
@@ -85,24 +78,14 @@ type TabsStyleType = 'brisk' | 'card' | 'chrome' | 'plain';
  */
 type PageTransitionType = 'fade' | 'fade-down' | 'fade-slide' | 'fade-up';
 
-/**
- * 页面切换动画
- * panel-center 居中布局
- * panel-left 居左布局
- * panel-right 居右布局
- */
-type AuthPageLayoutType = 'panel-center' | 'panel-left' | 'panel-right';
-
 export type {
   AccessModeType,
-  AuthPageLayoutType,
   BreadcrumbStyleType,
   BuiltinThemeType,
   ContentCompactType,
   LayoutHeaderMenuAlignType,
   LayoutHeaderModeType,
   LayoutType,
-  LoginExpiredModeType,
   NavigationStyleType,
   PageTransitionType,
   PreferencesButtonPositionType,

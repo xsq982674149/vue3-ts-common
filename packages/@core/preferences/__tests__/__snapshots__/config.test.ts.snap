@@ -4,7 +4,6 @@ exports[`defaultPreferences immutability test > should not modify the config obj
 {
   "app": {
     "accessMode": "frontend",
-    "authPageLayout": "panel-right",
     "checkUpdatesInterval": 1,
     "colorGrayMode": false,
     "colorWeakMode": false,
@@ -25,7 +24,6 @@ exports[`defaultPreferences immutability test > should not modify the config obj
     "isMobile": false,
     "layout": "sidebar-nav",
     "locale": "zh-CN",
-    "loginExpiredMode": "page",
     "name": "Vben Admin",
     "preferencesButtonPosition": "auto",
     "watermark": false,
@@ -117,11 +115,12 @@ exports[`defaultPreferences immutability test > should not modify the config obj
     "fullscreen": true,
     "globalSearch": true,
     "languageToggle": true,
-    "lockScreen": true,
-    "notification": true,
+    "lockScreen": false,
+    "notification": false,
     "refresh": true,
     "sidebarToggle": true,
     "themeToggle": true,
+    "timeDisplay": true,
   },
 }
 `;

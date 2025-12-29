@@ -1,6 +1,5 @@
 import type {
   AccessModeType,
-  AuthPageLayoutType,
   BreadcrumbStyleType,
   BuiltinThemeType,
   ContentCompactType,
@@ -8,7 +7,6 @@ import type {
   LayoutHeaderMenuAlignType,
   LayoutHeaderModeType,
   LayoutType,
-  LoginExpiredModeType,
   NavigationStyleType,
   PageTransitionType,
   PreferencesButtonPositionType,
@@ -21,8 +19,6 @@ type SupportedLanguagesType = 'en-US' | 'zh-CN';
 interface AppPreferences {
   /** 权限模式 */
   accessMode: AccessModeType;
-  /** 登录注册页面布局 */
-  authPageLayout: AuthPageLayoutType;
   /** 检查更新轮询时间 */
   checkUpdatesInterval: number;
   /** 是否开启灰色模式 */
@@ -65,8 +61,6 @@ interface AppPreferences {
   layout: LayoutType;
   /** 支持的语言 */
   locale: SupportedLanguagesType;
-  /** 登录过期模式 */
-  loginExpiredMode: LoginExpiredModeType;
   /** 应用名 */
   name: string;
   /** 偏好设置按钮位置 */

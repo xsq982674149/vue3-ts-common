@@ -108,6 +108,23 @@ function getCurrentLocalTime(format: string = 'YYYY-MM-DD HH:mm:ss'): string {
 }
 
 /**
+ * 获取用户时区的UTC偏移量字符串
+ * @returns 格式化的偏移量字符串，如 "UTC+8" 或 "UTC-5"
+ */
+function getTimezoneOffset(): string {
+  const userTimezone = getTimezoneFromCookie();
+  const offsetMinutes = dayjs.utc().tz(userTimezone).utcOffset();
+  const hours = Math.floor(Math.abs(offsetMinutes) / 60);
+  const minutes = Math.abs(offsetMinutes) % 60;
+  const sign = offsetMinutes >= 0 ? '+' : '-';
+
+  if (minutes === 0) {
+    return `UTC${sign}${hours}`;
+  }
+  return `UTC${sign}${hours}:${minutes.toString().padStart(2, '0')}`;
+}
+
+/**
  * 设置用户时区（同时保存到 Cookie）
  * @param timezone 时区字符串
  */
@@ -120,6 +137,7 @@ export {
   getCurrentLocalTime,
   getCurrentTimezone,
   getTimezoneFromCookie,
+  getTimezoneOffset,
   localToUtc,
   localToUtcDayjs,
   setTimezone,

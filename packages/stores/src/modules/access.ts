@@ -20,7 +20,7 @@ interface AccessState {
    */
   accessRoutes: RouteRecordRaw[];
   /**
-   * 登录 accessToken
+   * accessToken
    */
   accessToken: AccessToken;
   /**
@@ -36,11 +36,7 @@ interface AccessState {
    */
   lockScreenPassword?: string;
   /**
-   * 登录是否过期
-   */
-  loginExpired: boolean;
-  /**
-   * 登录 accessToken
+   * refreshToken
    */
   refreshToken: AccessToken;
 }
@@ -88,9 +84,6 @@ export const useAccessStore = defineStore('core-access', {
     setIsAccessChecked(isAccessChecked: boolean) {
       this.isAccessChecked = isAccessChecked;
     },
-    setLoginExpired(loginExpired: boolean) {
-      this.loginExpired = loginExpired;
-    },
     setRefreshToken(token: AccessToken) {
       this.refreshToken = token;
     },
@@ -117,7 +110,6 @@ export const useAccessStore = defineStore('core-access', {
     isAccessChecked: false,
     isLockScreen: false,
     lockScreenPassword: undefined,
-    loginExpired: false,
     refreshToken: null,
   }),
 });

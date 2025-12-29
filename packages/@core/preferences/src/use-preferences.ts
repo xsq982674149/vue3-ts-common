@@ -129,27 +129,6 @@ function usePreferences() {
   );
 
   /**
-   * @zh_CN 登录注册页面布局是否为左侧
-   */
-  const authPanelLeft = computed(() => {
-    return appPreferences.value.authPageLayout === 'panel-left';
-  });
-
-  /**
-   * @zh_CN 登录注册页面布局是否为左侧
-   */
-  const authPanelRight = computed(() => {
-    return appPreferences.value.authPageLayout === 'panel-right';
-  });
-
-  /**
-   * @zh_CN 登录注册页面布局是否为中间
-   */
-  const authPanelCenter = computed(() => {
-    return appPreferences.value.authPageLayout === 'panel-center';
-  });
-
-  /**
    * @zh_CN 内容是否已经最大化
    * 排除 full-content模式
    */
@@ -224,9 +203,6 @@ function usePreferences() {
   });
 
   return {
-    authPanelCenter,
-    authPanelLeft,
-    authPanelRight,
     contentIsMaximize,
     diffPreference,
     globalLockScreenShortcutKey,
